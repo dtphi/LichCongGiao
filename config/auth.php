@@ -68,8 +68,8 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\LcgModels\LcgUser::class,
-        ]
+            'model' => App\User::class,
+        ],
 
         // 'users' => [
         //     'driver' => 'database',
