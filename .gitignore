@@ -11,5 +11,5 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
-lcg_front
-lcg_admin
+resources/lcg_front
+resources/lcg_admin
