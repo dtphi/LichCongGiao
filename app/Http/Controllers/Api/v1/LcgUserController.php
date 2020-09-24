@@ -10,9 +10,25 @@ namespace App\Http\Controllers\Api;
 
 
 use Illuminate\Http\Request;
+use App\Http\LcgServices\LcgContracts\LcgUserContract as UserSv;
 
 class LcgUserController
 {
+    /**
+     * @var UserSv|null
+     */
+    private $uSv = null;
+
+    /**
+     * @author : Phi .
+     * LcgUserController constructor.
+     * @param UserSv $uSv
+     */
+    public function __construct(UserSv $uSv)
+    {
+        $this->uSv = $uSv;
+    }
+
     /**
      * @author : Phi .
      * @param Request $request
@@ -26,10 +42,10 @@ class LcgUserController
             'code'    => 200,
             'results'    => []
         ];
-        $data[] = [
-            'id'    => 1,
-            'name'  => 'Admin',
-            'email' => 'admin@gmail.com'
+        $results = $this->uSv->apiGetLists([], 1);
+        $data = [
+            'class' => get_class_methods($this->uSv),
+            'user' => $results
         ];
 
         $json['results'] = $data;
