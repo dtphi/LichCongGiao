@@ -44,7 +44,6 @@ class LcgUserController
         ];
         $results = $this->uSv->apiGetLists([], 2);
         $data = [
-            'class' => get_class_methods($this->uSv),
             'user' => $results
         ];
 

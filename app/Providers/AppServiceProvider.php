@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Http\LcgServices\LcgContracts\LcgUserContract;
 use App\Http\LcgServices\LcgUserService;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Pagination\Paginator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -26,6 +27,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Paginator::useBootstrap();
     }
 }

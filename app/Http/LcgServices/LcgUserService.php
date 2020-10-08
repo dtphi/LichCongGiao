@@ -9,6 +9,7 @@
 namespace App\Http\LcgServices;
 
 use App\Http\LcgServices\LcgContracts\LcgUserContract;
+use App\Http\LcgServices\LcgModels\LcgMember;
 use App\Http\LcgServices\LcgModels\LcgUser;
 use App\Http\Resources\User\LcgUserCollection;
 
@@ -25,7 +26,7 @@ class LcgUserService implements LcgUserContract
      */
     public function __construct()
     {
-        $this->user = new LcgUser();
+        $this->user = new LcgMember();
     }
 
     /**
@@ -39,7 +40,7 @@ class LcgUserService implements LcgUserContract
         // TODO: Implement apiGetLists() method.
         $query = $this->user->orderByCreatedAtDesc();
 
-        $results = new LcgUserCollection($query->paginate($limit));
+        $results = new LcgUserCollection(LcgMember::paginate());
 
         return $results;
     }
