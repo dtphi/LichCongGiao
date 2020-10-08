@@ -42,7 +42,7 @@ class LcgUserController
             'code'    => 200,
             'results'    => []
         ];
-        $results = $this->uSv->apiGetLists([], 1);
+        $results = $this->uSv->apiGetLists([], 2);
         $data = [
             'class' => get_class_methods($this->uSv),
             'user' => $results
