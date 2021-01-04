@@ -27,4 +27,6 @@ Route::namespace('Api')
         Route::get('/user', function (Request $request) {
             return $request->user();
         });
+
+        Route::apiResource('news-groups', 'LcgNewsGroupController');
     });
