@@ -9,8 +9,8 @@
 namespace App\Http\Controllers\Api;
 
 
-use Illuminate\Http\Request;
 use App\Http\LcgServices\LcgContracts\LcgNewsGroupContract as NewsGrSv;
+use Illuminate\Http\Request;
 
 class LcgNewsGroupController
 {
@@ -35,15 +35,18 @@ class LcgNewsGroupController
      */
     public function index(Request $request)
     {
-        $json   = [
+        $json          = [
             'message' => '',
             'errors'  => '',
             'code'    => 200,
-            'results'    => []
+            'results' => []
         ];
-        $results = $this->nwGrSv->apiGetLists([], 2);
+        $results       = $this->nwGrSv->apiGetLists($json, 0);
+        $newsGroupTree = $this->nwGrSv->generateTree($results);
+
         $data = [
-            'newsGroup' => $results
+            'newsGroup'     => $results,
+            'newsGroupTree' => $newsGroupTree
         ];
 
         $json['results'] = $data;
